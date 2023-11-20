@@ -19,10 +19,8 @@ import androidx.compose.ui.unit.dp
 
 import androidx.compose.runtime.Composable
 
-import androidx.navigation.NavHostController
-
 @Composable
-fun HomePage(navController: NavHostController) {
+fun HomePage() {
 	Column {
 		Box(modifier = Modifier.fillMaxWidth(),
 			contentAlignment = Alignment.TopCenter) {

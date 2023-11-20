@@ -1,6 +1,5 @@
 package com.achmaddaniel.kunime.pages
 
-import com.achmaddaniel.kunime.api.getCurrentUser
 import com.achmaddaniel.kunime.model.SplashScreen
 import com.achmaddaniel.kunime.ui.theme.Theme
 
@@ -19,8 +18,6 @@ import androidx.compose.material3.Surface
 
 import androidx.compose.ui.Modifier
 
-import androidx.navigation.compose.rememberNavController
-
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -32,11 +29,7 @@ class MainActivity : ComponentActivity() {
 			Theme {
 				Surface(modifier = Modifier.fillMaxSize(),
 						color = MaterialTheme.colorScheme.background) {
-					val navController = rememberNavController()
-					if(getCurrentUser() != null)
-						HomePage(navController)
-					else
-						LoginPage(navController)
+					HomePage()
 				} //Surface
 			} //Theme
 		} //SetContent

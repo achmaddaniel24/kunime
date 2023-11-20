@@ -59,7 +59,6 @@ dependencies {
 	implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 	
 	// Google Service
-	implementation("com.google.firebase:firebase-auth")
 	implementation("com.google.firebase:firebase-storage")
 	implementation("com.google.firebase:firebase-firestore")
 	
