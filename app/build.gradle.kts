@@ -1,7 +1,6 @@
 plugins {
 	id("com.android.application")
 	id("org.jetbrains.kotlin.android")
-	id("com.google.gms.google-services")
 }
 
 android {
@@ -55,12 +54,11 @@ android {
 dependencies {
 	// Platform
 	implementation(platform("androidx.compose:compose-bom:2022.10.00"))
-	implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
 	implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 	
-	// Google Service
-	implementation("com.google.firebase:firebase-storage")
-	implementation("com.google.firebase:firebase-firestore")
+	// API
+	implementation("com.squareup.retrofit2:retrofit:2.9.0")
+	implementation("io.coil-kt:coil-compose:2.5.0")
 	
 	// Jetpack Compose
 	implementation("androidx.compose.ui:ui-tooling-preview")

@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.navigation.NavHostController
 
 @Composable
-fun MovieInfoPage(navController: NavHostController) {
+fun InfoPage(navController: NavHostController) {
 	Column {
 	} //Column
 }

@@ -1,32 +1,72 @@
 package com.achmaddaniel.kunime.ui.theme
 
+import com.achmaddaniel.kunime.R
+
 import androidx.compose.material3.Typography
-import androidx.compose.ui.text.TextStyle
+
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.TextStyle
+
 import androidx.compose.ui.unit.sp
 
-// Set of Material typography styles to start with
+val FiraSans = FontFamily(
+	Font(R.font.firasans_light, FontWeight.Light),
+	Font(R.font.firasans_regular, FontWeight.Normal),
+	Font(R.font.firasans_italic, FontWeight.Normal, FontStyle.Italic),
+	Font(R.font.firasans_medium, FontWeight.Medium),
+	Font(R.font.firasans_bold, FontWeight.Bold),
+	Font(R.font.firasans_semibold, FontWeight.SemiBold)
+)
+
 val Typography = Typography(
-	bodyLarge = TextStyle(
-		fontFamily = FontFamily.Default,
-		fontWeight = FontWeight.Normal,
-		fontSize = 16.sp,
-		lineHeight = 24.sp,
-		letterSpacing = 0.5.sp
+	displayLarge = TextStyle(
+		fontFamily = FiraSans
+	),
+	displayMedium = TextStyle(
+		fontFamily = FiraSans
+	),
+	displaySmall = TextStyle(
+		fontFamily = FiraSans
+	),
+	headlineLarge = TextStyle(
+		fontFamily = FiraSans
+	),
+	headlineMedium = TextStyle(
+		fontFamily = FiraSans
+	),
+	headlineSmall = TextStyle(
+		fontFamily = FiraSans
 	),
 	titleLarge = TextStyle(
-		fontFamily = FontFamily.Default,
+		fontFamily = FiraSans,
 		fontWeight = FontWeight.Bold,
-		fontSize = 36.sp,
-		lineHeight = 28.sp,
-		letterSpacing = 0.sp
+		fontSize = 30.sp
+	),
+	titleMedium = TextStyle(
+		fontFamily = FiraSans
+	),
+	titleSmall = TextStyle(
+		fontFamily = FiraSans
+	),
+	bodyLarge = TextStyle(
+		fontFamily = FiraSans
+	),
+	bodyMedium = TextStyle(
+		fontFamily = FiraSans
+	),
+	bodySmall = TextStyle(
+		fontFamily = FiraSans
+	),
+	labelLarge = TextStyle(
+		fontFamily = FiraSans
+	),
+	labelMedium = TextStyle(
+		fontFamily = FiraSans
 	),
 	labelSmall = TextStyle(
-		fontFamily = FontFamily.Default,
-		fontWeight = FontWeight.Medium,
-		fontSize = 11.sp,
-		lineHeight = 16.sp,
-		letterSpacing = 0.5.sp
+		fontFamily = FiraSans
 	)
 )

@@ -1,10 +1,12 @@
 package com.achmaddaniel.kunime.ui.widget
 
+import com.achmaddaniel.kunime.ui.theme.Typography
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 
-import androidx.compose.material3.MaterialTheme
+//import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Icon
@@ -34,8 +36,11 @@ fun SearchView(hint: String = "Search") {
 		onActiveChange = {
 			active = it
 		},
-		placeholder = { Text(hint) },
-		//textStyle = MaterialTheme.typography.body1,
+		placeholder = {
+			Text(text = hint,
+				 style = Typography.bodyLarge
+			)
+		},
 		leadingIcon = {
 			Icon(
 				imageVector = Icons.Default.Search,

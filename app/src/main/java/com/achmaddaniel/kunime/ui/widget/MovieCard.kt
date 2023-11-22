@@ -12,13 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun MovieCard(title: String, subtitle: String) {
+fun MovieCard(title: String, image: String) {
 	Card(colors = CardDefaults.cardColors(
 			containerColor = MaterialTheme.colorScheme.surfaceVariant,
 		)) {
 		Column {
 			Text(text = title)
-			Text(text = subtitle)
 		} //Column
 	} //Card
 }
