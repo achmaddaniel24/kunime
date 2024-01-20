@@ -1,8 +1,9 @@
 package com.achmaddaniel.kunime.ui.theme
 
 import android.app.Activity
-
 import android.os.Build
+
+import androidx.core.view.WindowCompat
 
 import androidx.compose.foundation.isSystemInDarkTheme
 
@@ -17,11 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
-
-import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
 )
@@ -48,8 +46,8 @@ fun Theme(darkTheme: Boolean = isSystemInDarkTheme(),
 	if(!view.isInEditMode) {
 		SideEffect {
 			val window = (view.context as Activity).window
-			window.statusBarColor = colorScheme.primary.toArgb()
-			WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+			window.statusBarColor = colorScheme.background.toArgb()
+			WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
 		} //SideEffect
 	}
 	MaterialTheme(

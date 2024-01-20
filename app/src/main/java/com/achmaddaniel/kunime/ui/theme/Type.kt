@@ -12,61 +12,57 @@ import androidx.compose.ui.text.TextStyle
 
 import androidx.compose.ui.unit.sp
 
-val FiraSans = FontFamily(
-	Font(R.font.firasans_light, FontWeight.Light),
-	Font(R.font.firasans_regular, FontWeight.Normal),
-	Font(R.font.firasans_italic, FontWeight.Normal, FontStyle.Italic),
-	Font(R.font.firasans_medium, FontWeight.Medium),
-	Font(R.font.firasans_bold, FontWeight.Bold),
-	Font(R.font.firasans_semibold, FontWeight.SemiBold)
+val SfPro = FontFamily(
+	Font(R.font.sf_pro, FontWeight.Normal),
+	Font(R.font.sf_pro_italic, FontWeight.Normal, FontStyle.Italic)
 )
 
 val Typography = Typography(
 	displayLarge = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	displayMedium = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	displaySmall = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	headlineLarge = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	headlineMedium = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	headlineSmall = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	titleLarge = TextStyle(
-		fontFamily = FiraSans,
+		fontFamily = SfPro,
 		fontWeight = FontWeight.Bold,
 		fontSize = 30.sp
 	),
 	titleMedium = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	titleSmall = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	bodyLarge = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	bodyMedium = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	bodySmall = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	labelLarge = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	labelMedium = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	),
 	labelSmall = TextStyle(
-		fontFamily = FiraSans
+		fontFamily = SfPro
 	)
 )
