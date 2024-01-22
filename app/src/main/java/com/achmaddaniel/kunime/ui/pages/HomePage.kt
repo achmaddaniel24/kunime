@@ -1,6 +1,6 @@
 package com.achmaddaniel.kunime.ui.pages
 
-import com.achmaddaniel.kunime.model.OngoingAnime
+import com.achmaddaniel.kunime.api.model.OngoingAnimeModel
 import com.achmaddaniel.kunime.ui.theme.Typography
 import com.achmaddaniel.kunime.ui.widget.Carousel
 import com.achmaddaniel.kunime.ui.widget.SearchView
@@ -21,60 +21,21 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 import android.widget.Toast
+import android.util.Log
 
 @Composable
 fun HomePage() {
-	val context = LocalContext.current
-	/* TEST */
-	val ongoingList = ArrayList<OngoingAnime>()
-	ongoingList.add(
-		OngoingAnime(
-			"Isekai de Mofumofu Nadenade suru Tame ni Ganbattemasu",
-			"https://otakudesu.media/wp-content/uploads/2024/01/Isekai-de-Mofumofu-Nadenade-suru-Tame-ni-Ganbattemasu..jpg",
-			"Senin, 15 Januari 2024",
-			"3"
-		)
-	)
-	ongoingList.add(
-		OngoingAnime(
-			"Shin no Nakama ja Nai to Yuusha no Party wo Oidasareta node Season 2",
-			"https://otakudesu.media/wp-content/uploads/2024/01/shinnonakama-season-2-655e084c1dfffp.jpg",
-			"Senin, 15 Januari 2024",
-			"2"
-		)
-	)
-	ongoingList.add(
-		OngoingAnime(
-			"Nanatsu no Taizai: Mokushiroku no Yonkishi",
-			"https://otakudesu.media/wp-content/uploads/2023/10/Nanatsu-no-Taizai-Mokushiroku-no-Yonkishi.jpg",
-			"Minggu, 14 Januari 2024",
-			"13"
-		)
-	)
-	ongoingList.add(
-		OngoingAnime(
-			"Captain Tsubasa Season 2: Junior Youth-hen",
-			"https://otakudesu.media/wp-content/uploads/2023/10/Captain-Tsubasa-Season-2.jpg",
-			"Minggu, 14 Januari 2024",
-			"15"
-		)
-	)
-	ongoingList.add(
-		OngoingAnime(
-			"One Piece",
-			"https://otakudesu.media/wp-content/uploads/2021/05/One-Piece-Sub-Indo.jpg",
-			"Minggu, 14 Januari 2024",
-			"1090"
-		)
-	)
-	ongoingList.add(
-		OngoingAnime(
-			"Kingdom Season 5",
-			"https://otakudesu.media/wp-content/uploads/2024/01/Kingdom-Season-5-Subtitle-Indonesia.jpg",
-			"Minggu, 14 Januari 2024",
-			"1"
-		)
-	)
+	Log.i("HOME_PAGE", "HELLO WORLD")
+	
+	var context = LocalContext.current
+	var ongoingAnimeList = ArrayList<String>()
+	val models = OngoingAnimeModel()
+	models.fetch()
+	Log.i("HOME_PAGE", "content: ${models.content}")
+	models.content.forEach { model ->
+		ongoingAnimeList.add(model.thumb)
+		Log.i("HOME_PAGE", "thumb: ${model.thumb}")
+	}
 	
 	Column(modifier = Modifier.fillMaxSize()) {
 		Box(modifier = Modifier.fillMaxWidth(),
@@ -85,8 +46,20 @@ fun HomePage() {
 			 style = Typography.titleLarge,
 			 modifier = Modifier.padding(start = 20.dp, top = 20.dp, end = 20.dp)
 		) //Text
-		Carousel(content = ongoingList, onClick = {
+		Carousel(images = getOngoingListTest(), onClick = {
 			Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
 		}) //Carousel
 	} //Column
+}
+
+fun getOngoingListTest() : ArrayList<String> {
+	Log.i("HOME_PAGE", "HELLO WORLD TEST")
+	var ongoingList = ArrayList<String>()
+	ongoingList.add("https://otakudesu.media/wp-content/uploads/2024/01/Bucchigiri-Subtitle-Indonesia.jpg")
+	ongoingList.add("https://otakudesu.media/wp-content/uploads/2024/01/shinnonakama-season-2-655e084c1dfffp.jpg")
+	ongoingList.add("https://otakudesu.media/wp-content/uploads/2023/10/Nanatsu-no-Taizai-Mokushiroku-no-Yonkishi.jpg")
+	ongoingList.add("https://otakudesu.media/wp-content/uploads/2023/10/Captain-Tsubasa-Season-2.jpg")
+	ongoingList.add("https://otakudesu.media/wp-content/uploads/2021/05/One-Piece-Sub-Indo.jpg")
+	ongoingList.add("https://otakudesu.media/wp-content/uploads/2024/01/Kingdom-Season-5-Subtitle-Indonesia.jpg")
+	return ongoingList
 }

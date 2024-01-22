@@ -41,7 +41,7 @@ android {
 	}
 	
 	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.4"
+		kotlinCompilerExtensionVersion = "1.5.8"
 	}
 	
 	packaging {
@@ -71,6 +71,10 @@ dependencies {
 	implementation("androidx.activity:activity-compose")
 	implementation("androidx.core:core-ktx:1.12.0")
 	implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+	
+	// Kotlin Coroutine
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0-RC2")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2")
 	
 	// Debugging Tools
 	implementation("androidx.compose.ui:ui-tooling-preview")

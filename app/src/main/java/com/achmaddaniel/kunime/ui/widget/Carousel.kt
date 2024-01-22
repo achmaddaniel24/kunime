@@ -1,6 +1,5 @@
 package com.achmaddaniel.kunime.ui.widget
 
-import com.achmaddaniel.kunime.model.OngoingAnime
 import com.achmaddaniel.kunime.ui.widget.card.ImageCard
 
 import androidx.compose.foundation.layout.Arrangement
@@ -19,17 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Carousel(content: ArrayList<OngoingAnime>, onClick: () -> Unit) {
+fun Carousel(images: ArrayList<String>, onClick: () -> Unit) {
 	Column(modifier = Modifier.fillMaxSize()) {
 		Box(modifier = Modifier.padding(22.dp)) {
 			LazyRow(state = rememberLazyListState(),
 					modifier = Modifier.fillMaxWidth(),
 					horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-				itemsIndexed(content) { _, model ->
-					ImageCard(
-						model.thumb,
-						onClick
-					) //ImageCard
+				itemsIndexed(images) { _, image ->
+					ImageCard(image, onClick)
 				} //itemsIndexed
 			} //LazyRow
 		} //Box

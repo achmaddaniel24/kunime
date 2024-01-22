@@ -1,8 +1,8 @@
 package com.achmaddaniel.kunime.api.model
 
-import com.achmaddaniel.kunime.api.ApiServices
-import com.achmaddaniel.kunime.api.ongoingToData
-import com.achmaddaniel.kunime.common.data.*
+import com.achmaddaniel.kunime.api.ClientService
+import com.achmaddaniel.kunime.api.response.OngoingAnime
+import com.achmaddaniel.kunime.api.response.OngoingAnimeResponse
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,26 +12,23 @@ import android.util.Log
 
 class OngoingAnimeModel {
 	
-	var res: ArrayList<DataVideo> = ArrayList<DataVideo>()
+	var content: ArrayList<OngoingAnime> = ArrayList<OngoingAnime>()
 	
 	fun fetch() {
-		ApiServices.endpoint.getOngoingList().enqueue(object : Callback<OngoingAnimeResponse> {
+		ClientService.endpoint.getOngoingList().enqueue(object: Callback<OngoingAnimeResponse> {
 			override fun onResponse(call: Call<OngoingAnimeResponse>, response: Response<OngoingAnimeResponse>) {
 				if(response.isSuccessful) {
-					var responseBody = response.body()?.ongoing
-					Log.i("API", "response: ${responseBody}")
-					responseBody?.forEach { item ->
-						res.add(ongoingToData(item))
-						Log.i("API", "-----------------------------------------------------------------------")
-						Log.i("API", "item: ${item}")
-						Log.i("API", "data: ${ongoingToData(item)}")
-						Log.i("API", "result: ${res}")
-					}
+					content.addAll(response.body()!!.ongoing)
+					Log.i("GET_ONGOING_ANIME", "thumb: ${content}")
 				}
 			}
 			override fun onFailure(call: Call<OngoingAnimeResponse>, t: Throwable) {
-				Log.e("API", t.toString())
+				Log.e("GET_ONGOING_ANIME", t.toString())
 			}
 		})
+	}
+	
+	fun available() : Boolean {
+		return content.size > 0
 	}
 }
