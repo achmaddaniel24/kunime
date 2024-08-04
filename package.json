@@ -1,0 +1,23 @@
+{
+  "name": "kunime-api",
+  "version": "1.0.0",
+  "description": "Kunime API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "achmaddaniel24",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4",
+    "puppeteer": "^22.15.0",
+    "qs": "^6.13.0"
+  }
+}
