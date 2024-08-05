@@ -1,12 +1,10 @@
 {
   "name": "kunime-api",
   "version": "1.0.0",
-  "description": "Kunime API.",
+  "description": "Kunime API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "achmaddaniel24",
