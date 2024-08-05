@@ -2,16 +2,22 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const qs = require("qs");
 
+if (!process.env.BASE_URL) {
+  throw new Error('Invalid/Missing environment variable: "BASE_URL"');
+}
+
+const baseUrl = process.env.BASE_URL;
+
 async function getNonce() {
   try {
-    const url = `${process.env.BASE_URL}/wp-admin/admin-ajax.php`;
+    const url = `${baseUrl}/wp-admin/admin-ajax.php`;
     const payload = {
       action: "aa1208d27f29ca340c92c66d1926f13f",
     };
     const response = await axios.post(url, qs.stringify(payload), {
       headers: {
-        Origin: process.env.BASE_URL,
-        Referer: process.env.BASE_URL,
+        Origin: baseUrl,
+        Referer: baseUrl,
         Cookie: process.env.COOKIE,
         "User-Agent": process.env.USER_AGENT,
         "X-Requested-With": process.env.X_REQUEST_WITH,
@@ -38,11 +44,11 @@ async function getUrlAjax(content, nonce) {
       action: "2a3505c93b0035d3f455df82bf976b84",
     };
 
-    const url = `${process.env.BASE_URL}/wp-admin/admin-ajax.php`;
+    const url = `${baseUrl}/wp-admin/admin-ajax.php`;
     const response = await axios.post(url, qs.stringify(payload), {
       headers: {
-        Origin: process.env.BASE_URL,
-        Referer: process.env.BASE_URL,
+        Origin: baseUrl,
+        Referer: baseUrl,
         Cookie: process.env.COOKIE,
         "User-Agent": process.env.USER_AGENT,
         "X-Requested-With": process.env.X_REQUEST_WITH,

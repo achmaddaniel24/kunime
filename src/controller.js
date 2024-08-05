@@ -8,14 +8,18 @@ const {
   batchQualityFunction,
 } = require("./helper");
 
+if (!process.env.BASE_URL) {
+  throw new Error('Invalid/Missing environment variable: "BASE_URL"');
+}
+
+const baseUrl = process.env.BASE_URL;
+
 function parseEpisodeNumber(episodeText) {
   return parseInt(episodeText.replace("Episode ", ""), 10) || 0;
 }
 
 function extractEndpoint(href) {
-  return (
-    href?.replace(`${process.env.BASE_URL}/anime/`, "").replace("/", "") || ""
-  );
+  return href?.replace(`${baseUrl}/anime/`, "").replace("/", "") || "";
 }
 
 function extractGenres(text) {
@@ -35,8 +39,8 @@ async function getOngoingAnime(req, res) {
   const { page } = req.params;
   const url =
     page === 1
-      ? `${process.env.BASE_URL}/ongoing-anime`
-      : `${process.env.BASE_URL}/ongoing-anime/page/${page}`;
+      ? `${baseUrl}/ongoing-anime`
+      : `${baseUrl}/ongoing-anime/page/${page}`;
 
   try {
     const response = await axios.get(url);
@@ -83,8 +87,8 @@ async function getCompletedAnime(req, res) {
   const { page } = req.params;
   const url =
     page === 1
-      ? `${process.env.BASE_URL}/complete-anime`
-      : `${process.env.BASE_URL}/complete-anime/page/${page}`;
+      ? `${baseUrl}/complete-anime`
+      : `${baseUrl}/complete-anime/page/${page}`;
 
   try {
     const response = await axios.get(url);
@@ -131,9 +135,7 @@ async function searchAnime(req, res) {
   const { query } = req.params;
 
   try {
-    const response = await axios.get(
-      `${process.env.BASE_URL}/?s=${query}&post_type=anime`
-    );
+    const response = await axios.get(`${baseUrl}/?s=${query}&post_type=anime`);
 
     if (response.status !== 200) {
       return res.status(response.status).json({
@@ -178,7 +180,7 @@ async function searchAnime(req, res) {
 
 async function getAnimeList(_, res) {
   try {
-    const response = await axios.get(`${process.env.BASE_URL}/anime-list`);
+    const response = await axios.get(`${baseUrl}/anime-list`);
 
     if (response.status !== 200) {
       return res.status(response.status).json({
@@ -197,7 +199,7 @@ async function getAnimeList(_, res) {
         const endpoint = $(el)
           .find("a")
           .attr("href")
-          .replace(`${process.env.BASE_URL}/anime/`, "");
+          .replace(`${baseUrl}/anime/`, "");
 
         return { title, endpoint };
       })
@@ -221,9 +223,7 @@ async function getAnimeList(_, res) {
 async function getAnimeDetail(req, res) {
   const endpoint = req.params.endpoint;
   try {
-    const response = await axios.get(
-      `${process.env.BASE_URL}/anime/${endpoint}`
-    );
+    const response = await axios.get(`${baseUrl}/anime/${endpoint}`);
 
     if (response.status !== 200) {
       return res.status(response.status).json({
@@ -251,10 +251,7 @@ async function getAnimeDetail(req, res) {
         endpoint: $(el)
           .find("span > a")
           .attr("href")
-          .replace(
-            new RegExp(`${process.env.BASE_URL}/(episode|batch|lengkap)/`, "g"),
-            ""
-          )
+          .replace(new RegExp(`${baseUrl}/(episode|batch|lengkap)/`, "g"), "")
           .replace("/", ""),
         date: $(el).find(".zeebr").text().trim().replace(",", " "),
       }))
@@ -285,7 +282,7 @@ async function getAnimeDetail(req, res) {
 
 async function getAnimeEpisode(req, res) {
   const endpoint = req.params.endpoint;
-  const url = `${process.env.BASE_URL}/episode/${endpoint}`;
+  const url = `${baseUrl}/episode/${endpoint}`;
 
   try {
     const response = await axios.get(url);
@@ -310,7 +307,7 @@ async function getAnimeEpisode(req, res) {
     }
 
     const episodeData = {
-      id: url.replace(`${process.env.BASE_URL}/episode/`, ""),
+      id: url.replace(`${baseUrl}/episode/`, ""),
       title,
       base_url: url,
       stream_link: $("#embed_holder .responsive-embed-stream iframe").attr(
@@ -323,9 +320,7 @@ async function getAnimeEpisode(req, res) {
     episodeData.list_episode = $("#selectcog option")
       .map((_, el) => ({
         title: $(el).text().trim(),
-        endpoint: $(el)
-          .attr("value")
-          .replace(`${process.env.BASE_URL}/episode/`, ""),
+        endpoint: $(el).attr("value").replace(`${baseUrl}/episode/`, ""),
       }))
       .get()
       .slice(1);
@@ -392,7 +387,7 @@ async function getAnimeEpisode(req, res) {
 
 async function getAnimeBatch(req, res) {
   const { endpoint } = req.params;
-  const url = `${process.env.BASE_URL}/batch/${endpoint}`;
+  const url = `${baseUrl}/batch/${endpoint}`;
 
   try {
     const response = await axios.get(url);
@@ -434,7 +429,7 @@ async function getAnimeBatch(req, res) {
 
 async function getGenreList(_, res) {
   try {
-    const response = await axios.get(`${process.env.BASE_URL}/genre-list/`);
+    const response = await axios.get(`${baseUrl}/genre-list/`);
 
     if (response.status !== 200) {
       return res.status(response.status).json({
@@ -476,8 +471,8 @@ async function getGenrePage(req, res) {
   const { genre, page } = req.params;
   const url =
     page === 1
-      ? `${process.env.BASE_URL}/genres/${genre}`
-      : `${process.env.BASE_URL}/genres/${genre}/page/${page}`;
+      ? `${baseUrl}/genres/${genre}`
+      : `${baseUrl}/genres/${genre}/page/${page}`;
 
   try {
     const response = await axios.get(url);
@@ -500,7 +495,7 @@ async function getGenrePage(req, res) {
           $(el)
             .find(".col-anime-title > a")
             .attr("href")
-            ?.replace(`${process.env.BASE_URL}/anime/`, "") || "",
+            ?.replace(`${baseUrl}/anime/`, "") || "",
         studio: $(el).find(".col-anime-studio").text().trim(),
         episode:
           parseInt(
