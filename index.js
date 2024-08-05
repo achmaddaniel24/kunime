@@ -7,13 +7,11 @@ const app = express();
 app.use(cors());
 app.use(route);
 
-if (process.env.NODE_ENV !== "production") {
-  const port = process.env.PORT || 8000;
-  app.listen(port, () => {
-    try {
-      console.log(`Server running on port ${port}`);
-    } catch (error) {
-      throw error;
-    }
-  });
-}
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  try {
+    console.log(`Server running on port ${port}`);
+  } catch (error) {
+    throw error;
+  }
+});
