@@ -1,10 +1,41 @@
 const express = require("express");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+const mongoose = require("mongoose");
 const route = require("./src/route");
+
+if (!process.env.MONGODB_URI) {
+  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+}
+const uri = process.env.MONGODB_URI;
+const clientOptions = {
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
+  serverApi: {
+    version: "1",
+    strict: true,
+    deprecationErrors: true,
+  },
+};
+
+mongoose
+  .connect(uri, clientOptions)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // Limit requests per 15 minutes
+  max: 50, // Allow maximum 50 requests per window
+  message: {
+    message: "Too many requests. Please try again later.",
+  },
+});
 
 const app = express();
 
 app.use(cors());
+// Apply the limiter middleware to specific routes or globally
+app.use(limiter);
 app.use(route);
 
 const port = process.env.PORT || 8000;
