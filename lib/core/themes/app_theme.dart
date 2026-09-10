@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'app_tokens.dart';
 
 class AppTheme {
@@ -20,10 +21,18 @@ class AppTheme {
       scaffoldBackgroundColor: AppTokens.background,
       fontFamily: 'Urbanist',
 
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: AppTokens.background,
         foregroundColor: AppTokens.onBackground,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor: Colors.transparent,
+          systemNavigationBarDividerColor: Colors.transparent,
+          systemNavigationBarIconBrightness: Brightness.light,
+          systemNavigationBarContrastEnforced: false,
+          systemStatusBarContrastEnforced: false,
+        ),
       ),
 
       textTheme: const TextTheme(
