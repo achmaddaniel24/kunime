@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:kunime/core/themes/app_colors.dart';
 import 'package:kunime/core/themes/app_tokens.dart';
+import 'package:kunime/core/widgets/shimmer_placeholder.dart';
 import 'package:kunime/features/home/presentation/sections/ongoing/widgets/ongoing_anime_skeleton_card.dart';
 
 class OngoingAnimeCard extends StatelessWidget {
@@ -45,11 +46,11 @@ class OngoingAnimeCard extends StatelessWidget {
                       Container(
                         height: 200,
                         width: 140,
-                        color: AppColors.neutral800,
+                        color: AppTokens.secondary,
                         child: const Center(
                           child: Icon(
                             Icons.movie_creation,
-                            color: AppColors.neutral300,
+                            color: AppTokens.onSecondary,
                             size: 40,
                           ),
                         ),
@@ -64,23 +65,29 @@ class OngoingAnimeCard extends StatelessWidget {
                         placeholder: (context, url) => Container(
                           height: 200,
                           width: 140,
-                          color: AppColors.neutral800,
-                          child: OngoingAnimeSkeletonCard(),
+                          color: AppTokens.secondary,
+                          child: const ShimmerPlaceholder(
+                            child: OngoingAnimeSkeletonCard(),
+                          ),
                         ),
                         errorWidget: (context, url, error) => Container(
                           height: 200,
                           width: 140,
-                          color: AppColors.neutral800,
+                          color: AppTokens.secondary,
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.error, size: 30, color: Colors.red),
+                              Icon(
+                                Icons.error,
+                                size: 30,
+                                color: AppTokens.errorBadge,
+                              ),
                               SizedBox(height: 4),
                               Text(
-                                'Error',
+                                'Gagal memuat gambar',
                                 style: TextStyle(
                                   fontSize: 10,
-                                  color: AppColors.error,
+                                  color: AppTokens.errorBadge,
                                 ),
                               ),
                             ],

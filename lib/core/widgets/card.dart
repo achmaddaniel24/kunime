@@ -269,13 +269,6 @@ class _Poster extends StatelessWidget {
               color: AppColors.neutral800,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Center(
-              child: Icon(
-                Icons.broken_image,
-                size: 24,
-                color: AppColors.errorBadge,
-              ),
-            ),
           );
         },
       ),
