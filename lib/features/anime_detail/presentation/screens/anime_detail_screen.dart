@@ -130,7 +130,7 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
                   ),
                 ),
               ),
-              error: (_, __) =>
+              error: (_, _) =>
                   const SliverToBoxAdapter(child: SizedBox.shrink()),
             ),
             SliverToBoxAdapter(

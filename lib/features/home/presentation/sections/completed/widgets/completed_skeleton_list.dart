@@ -11,7 +11,7 @@ class CompletedSkeletonList extends StatelessWidget {
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (_, __) => const KCardSkeleton(),
+      itemBuilder: (_, _) => const KCardSkeleton(),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class UiAnime {
   final String id;
   final String title;
@@ -19,8 +21,14 @@ class UiBanner {
 class UiCategory {
   final String id;
   final String label;
-  final String icon;
-  const UiCategory({required this.id, required this.label, required this.icon});
+  final IconData icon;
+  final IconData? activeIcon;
+  const UiCategory({
+    required this.id,
+    required this.label,
+    required this.icon,
+    this.activeIcon,
+  });
 }
 
 class UiOngoing {

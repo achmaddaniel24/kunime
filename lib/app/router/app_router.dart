@@ -53,17 +53,17 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/',
         name: RouteName.splash,
-        builder: (_, __) => const SplashScreen(),
+        builder: (_, _) => const SplashScreen(),
       ),
       GoRoute(
         path: '/onboarding',
         name: RouteName.onboarding,
-        builder: (_, __) => const OnboardingScreen(),
+        builder: (_, _) => const OnboardingScreen(),
       ),
       GoRoute(
         path: '/home',
         name: RouteName.home,
-        builder: (_, __) => const HomeScreen(),
+        builder: (_, _) => const HomeScreen(),
         routes: [
           GoRoute(
             path: 'anime/:endpoint',
@@ -81,12 +81,12 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'notification',
             name: RouteName.notification,
-            builder: (_, __) => const NotificationScreen(),
+            builder: (_, _) => const NotificationScreen(),
           ),
           GoRoute(
             path: 'search',
             name: RouteName.search,
-            builder: (_, __) => const SearchScreen(),
+            builder: (_, _) => const SearchScreen(),
           ),
         ],
       ),

@@ -91,8 +91,8 @@ class _BannerCarouselState extends State<BannerCarousel> {
                     : CachedNetworkImage(
                         imageUrl: imageUrl,
                         fit: BoxFit.cover,
-                        placeholder: (_, __) => const BannerSkeleton(),
-                        errorWidget: (_, failedUrl, ___) {
+                        placeholder: (_, _) => const BannerSkeleton(),
+                        errorWidget: (_, failedUrl, _) {
                           WidgetsBinding.instance.addPostFrameCallback((_) {
                             if (!mounted) return;
                             setState(() => _failedImageUrls.add(failedUrl));

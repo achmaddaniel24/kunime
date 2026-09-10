@@ -40,7 +40,7 @@ class RecommendationAnimeList extends StatelessWidget {
         ),
         value.when(
           loading: _buildSkeletonList,
-          error: (_, __) => const Padding(
+          error: (_, _) => const Padding(
             padding: EdgeInsets.all(16),
             child: Text(
               'Gagal memuat rekomendasi',
@@ -87,7 +87,7 @@ class RecommendationAnimeList extends StatelessWidget {
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (_, __) => const KCardSkeleton(),
+      itemBuilder: (_, _) => const KCardSkeleton(),
     );
   }
 }
