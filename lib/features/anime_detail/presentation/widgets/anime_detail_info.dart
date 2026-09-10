@@ -67,13 +67,13 @@ class AnimeDetailInfo extends StatelessWidget {
       children: [
         KButton(
           label: 'Putar',
-          icon: PhosphorIcons.play,
+          icon: PhosphorIcons.playFill,
           variant: KButtonVariant.primary,
           onPressed: () {},
         ),
         KButton(
           label: 'Simpan',
-          icon: PhosphorIcons.bookmark,
+          icon: PhosphorIcons.bookmarkFill,
           variant: KButtonVariant.secondary,
           onPressed: () {},
         ),

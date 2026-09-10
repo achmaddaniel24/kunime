@@ -33,7 +33,7 @@ class CategorySlider extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         padding: padding,
         itemCount: categories.length,
-        separatorBuilder: (_, __) => SizedBox(width: spacing),
+        separatorBuilder: (_, _) => SizedBox(width: spacing),
         itemBuilder: (context, index) {
           final c = categories[index];
           final selected = c.id == selectedId;
@@ -57,7 +57,11 @@ class CategorySlider extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  PhosphorIcon(c.icon, size: 18, color: fg),
+                  PhosphorIcon(
+                    selected ? (c.activeIcon ?? c.icon) : c.icon,
+                    size: 18,
+                    color: fg,
+                  ),
                   const SizedBox(width: 8),
                   Text(
                     c.label,

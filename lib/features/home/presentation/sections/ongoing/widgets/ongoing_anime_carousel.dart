@@ -63,7 +63,7 @@ class _OngoingAnimeCarouselState extends ConsumerState<OngoingAnimeCarousel> {
 
         widget.value.when(
           loading: () => const OngoingAnimeSkeletonList(),
-          error: (_, __) => const Padding(
+          error: (_, _) => const Padding(
             padding: EdgeInsets.all(16),
             child: Text('Gagal memuat data'),
           ),
@@ -87,7 +87,7 @@ class _OngoingAnimeCarouselState extends ConsumerState<OngoingAnimeCarousel> {
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 itemCount: data.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 16),
+                separatorBuilder: (_, _) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
                   final anime = data[index];
                   final layerLink = _links.putIfAbsent(

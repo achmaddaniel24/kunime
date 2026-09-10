@@ -270,7 +270,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top + kToolbarHeight,
       ),
-      itemBuilder: (_, __) => const KCardSkeleton(),
+      itemBuilder: (_, _) => const KCardSkeleton(),
     );
   }
 }

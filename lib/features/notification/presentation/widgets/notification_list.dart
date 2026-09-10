@@ -44,7 +44,7 @@ class NotificationList extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: AppColors.blue600,
                     child: PhosphorIcon(
-                      PhosphorIcons.bellRinging,
+                      PhosphorIcons.bellRingingFill,
                       size: 22,
                       color: AppColors.white,
                     ),

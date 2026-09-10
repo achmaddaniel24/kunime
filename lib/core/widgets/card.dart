@@ -193,7 +193,7 @@ class KCard extends StatelessWidget {
           Row(
             children: [
               PhosphorIcon(
-                PhosphorIcons.star,
+                PhosphorIcons.starFill,
                 size: 13,
                 color: AppTokens.notifBadge,
               ),
@@ -260,8 +260,8 @@ class _Poster extends StatelessWidget {
         width: 72,
         height: imageProportion == KCardImageProportion.vertical ? 100 : 72,
         fit: BoxFit.cover,
-        placeholder: (_, __) => const _PosterSkeleton(),
-        errorWidget: (_, __, ___) {
+        placeholder: (_, _) => const _PosterSkeleton(),
+        errorWidget: (_, _, _) {
           return Container(
             width: 72,
             height: imageProportion == KCardImageProportion.vertical ? 100 : 72,
@@ -302,12 +302,12 @@ class _TrailingIcon extends StatelessWidget {
         color = AppTokens.onSecondary.withValues(alpha: 0.6);
         break;
       case KCardTrailing.favorite:
-        icon = PhosphorIcons.bookmark;
+        icon = PhosphorIcons.bookmarkFill;
         size = 16;
         color = AppTokens.onSecondary;
         break;
       case KCardTrailing.play:
-        icon = PhosphorIcons.play;
+        icon = PhosphorIcons.playFill;
         size = 18;
         color = AppColors.purple400;
         break;

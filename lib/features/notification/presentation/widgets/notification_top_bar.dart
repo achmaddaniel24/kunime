@@ -53,7 +53,7 @@ class NotificationTopBar extends StatelessWidget
           child: IconButton(
             tooltip: 'Hapus Semua Notifikasi',
             icon: PhosphorIcon(
-              PhosphorIcons.trash,
+              PhosphorIcons.trashFill,
               size: 24,
               color: AppColors.errorBadge,
             ),

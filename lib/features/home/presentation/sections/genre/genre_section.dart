@@ -19,7 +19,7 @@ class GenreSection extends ConsumerWidget {
       ),
       child: genres.when(
         loading: () => const _GenreSkeletonGrid(),
-        error: (_, __) => const SizedBox.shrink(),
+        error: (_, _) => const SizedBox.shrink(),
         data: (items) => GenreGrid(genres: items),
       ),
     );
@@ -42,7 +42,7 @@ class _GenreSkeletonGrid extends StatelessWidget {
         mainAxisSpacing: 12,
         childAspectRatio: 1.6,
       ),
-      itemBuilder: (_, __) => const GenreCardSkeleton(),
+      itemBuilder: (_, _) => const GenreCardSkeleton(),
     );
   }
 }

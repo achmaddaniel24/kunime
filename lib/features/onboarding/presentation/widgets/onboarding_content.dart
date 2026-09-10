@@ -19,7 +19,12 @@ class OnboardingContent extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        CachedNetworkImage(imageUrl: imageUrl, fit: BoxFit.cover),
+        if (imageUrl.isNotEmpty)
+          CachedNetworkImage(
+            imageUrl: imageUrl,
+            fit: BoxFit.cover,
+            errorWidget: (context, url, error) => const SizedBox.shrink(),
+          ),
 
         DecoratedBox(
           decoration: BoxDecoration(

@@ -34,14 +34,7 @@ class HomeTopBar extends StatelessWidget implements PreferredSizeWidget {
         'Kunime',
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       ),
-      titleSpacing: 0,
-      leading: Center(
-        child: PhosphorIcon(
-          PhosphorIcons.playCircle,
-          size: 24,
-          color: AppColors.white,
-        ),
-      ),
+      titleSpacing: 18,
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 16),
@@ -52,7 +45,7 @@ class HomeTopBar extends StatelessWidget implements PreferredSizeWidget {
               backgroundColor: AppColors.blue500,
               textColor: AppColors.white,
               child: PhosphorIcon(
-                PhosphorIcons.bellRinging,
+                PhosphorIcons.bellRingingFill,
                 size: 24,
                 color: AppColors.white,
               ),

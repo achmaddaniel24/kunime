@@ -24,7 +24,7 @@ class AnimeDetailHeader extends StatelessWidget {
             imageUrl: imageUrl,
             alignment: Alignment.topCenter,
             fit: BoxFit.cover,
-            errorWidget: (_, __, ___) => Container(
+            errorWidget: (_, _, _) => Container(
               color: AppColors.neutral800,
               child: const Icon(
                 Icons.movie,

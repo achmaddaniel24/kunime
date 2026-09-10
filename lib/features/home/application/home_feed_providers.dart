@@ -42,17 +42,29 @@ final homeGenreProvider = FutureProvider<List<UiGenre>>((ref) async {
 
 final homeCategoryProvider = Provider<List<UiCategory>>((ref) {
   return [
-    UiCategory(id: 'ongoing', label: 'Sedang Tayang', icon: PhosphorIcons.fire),
+    UiCategory(
+      id: 'ongoing',
+      label: 'Sedang Tayang',
+      icon: PhosphorIcons.fire,
+      activeIcon: PhosphorIcons.fireFill,
+    ),
     UiCategory(
       id: 'completed',
       label: 'Sudah Tamat',
       icon: PhosphorIcons.checks,
+      activeIcon: PhosphorIcons.checksBold,
     ),
-    UiCategory(id: 'genre', label: 'Genre', icon: PhosphorIcons.shapes),
+    UiCategory(
+      id: 'genre',
+      label: 'Genre',
+      icon: PhosphorIcons.shapes,
+      activeIcon: PhosphorIcons.shapesFill,
+    ),
     UiCategory(
       id: 'favorite',
       label: 'Tersimpan',
       icon: PhosphorIcons.bookmark,
+      activeIcon: PhosphorIcons.bookmarkFill,
     ),
   ];
 });

@@ -22,7 +22,13 @@ class UiCategory {
   final String id;
   final String label;
   final IconData icon;
-  const UiCategory({required this.id, required this.label, required this.icon});
+  final IconData? activeIcon;
+  const UiCategory({
+    required this.id,
+    required this.label,
+    required this.icon,
+    this.activeIcon,
+  });
 }
 
 class UiOngoing {
