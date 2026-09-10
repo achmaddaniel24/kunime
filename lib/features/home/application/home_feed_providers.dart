@@ -30,6 +30,10 @@ final ongoingAnimeListProvider = FutureProvider<List<UiOngoing>>((ref) async {
   return ref.watch(homeRepositoryProvider).fetchOngoingAnime();
 });
 
+final completedAnimeListProvider = FutureProvider<List<UiCompleted>>((ref) {
+  return ref.watch(homeRepositoryProvider).fetchCompletedAnime();
+});
+
 final homeRecommendationProvider = FutureProvider<List<UiRecommendation>>((
   ref,
 ) async {
@@ -44,15 +48,9 @@ final homeCategoryProvider = Provider<List<UiCategory>>((ref) {
   return [
     UiCategory(
       id: 'ongoing',
-      label: 'Sedang Tayang',
+      label: 'Tonton Sekarang',
       icon: PhosphorIcons.fire,
       activeIcon: PhosphorIcons.fireFill,
-    ),
-    UiCategory(
-      id: 'completed',
-      label: 'Sudah Tamat',
-      icon: PhosphorIcons.checks,
-      activeIcon: PhosphorIcons.checksBold,
     ),
     UiCategory(
       id: 'genre',

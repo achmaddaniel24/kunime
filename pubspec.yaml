@@ -15,12 +15,12 @@ dependencies:
   card_swiper: ^3.0.1
   http: ^1.6.0
   cached_network_image: ^4.0.0
-  shimmer: ^4.0.0
   go_router: ^18.0.1
   flutter_riverpod: ^3.4.3
   shared_preferences: ^2.5.5
   url_launcher: ^6.3.2
   phosphoricons_flutter: ^1.0.0
+  shimmer_animation: 2.2.2+1
 dev_dependencies:
   flutter_test:
     sdk: flutter

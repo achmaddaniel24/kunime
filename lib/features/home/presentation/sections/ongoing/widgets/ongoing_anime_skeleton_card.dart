@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kunime/core/themes/app_tokens.dart';
 
 class OngoingAnimeSkeletonCard extends StatelessWidget {
   const OngoingAnimeSkeletonCard({super.key});
@@ -9,29 +10,24 @@ class OngoingAnimeSkeletonCard extends StatelessWidget {
       width: 140,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Container(
-          color: Colors.grey.shade900,
-          child: Stack(
-            children: [
-              // Image placeholder
-              Container(color: Colors.grey.shade900),
-
-              // Text skeleton INSIDE card
-              Positioned(
-                left: 8,
-                right: 8,
-                bottom: 12,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    _SkeletonLine(width: double.infinity, height: 14),
-                    SizedBox(height: 6),
-                    _SkeletonLine(width: 70, height: 12),
-                  ],
-                ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            const ColoredBox(color: AppTokens.secondary),
+            Positioned(
+              left: 8,
+              right: 8,
+              bottom: 12,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  _SkeletonLine(width: double.infinity, height: 14),
+                  SizedBox(height: 6),
+                  _SkeletonLine(width: 70, height: 12),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -50,7 +46,7 @@ class _SkeletonLine extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Colors.grey.shade800,
+        color: AppTokens.placeholder,
         borderRadius: BorderRadius.circular(4),
       ),
     );

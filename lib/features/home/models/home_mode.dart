@@ -1,1 +1,1 @@
-enum HomeMode { ongoing, completed, genre, favorite }
+enum HomeMode { ongoing, genre, favorite }

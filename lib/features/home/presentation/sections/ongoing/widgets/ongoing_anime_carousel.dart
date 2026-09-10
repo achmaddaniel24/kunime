@@ -22,7 +22,7 @@ class OngoingAnimeCarousel extends ConsumerStatefulWidget {
     required this.value,
     required this.onTapItem,
     this.onSeeAll,
-    this.title = 'Sedang Tayang',
+    this.title = 'Tonton Sekarang',
     this.height = 200,
     this.limit = 8,
   });

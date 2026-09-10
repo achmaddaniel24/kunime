@@ -3,10 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kunime/core/overlays/blur_overlay.dart';
 import 'package:kunime/core/widgets/async_view.dart';
 import 'package:kunime/features/home/application/context_menu_controller.dart';
-import 'package:kunime/features/home/application/completed_controller.dart';
 import 'package:kunime/features/home/application/home_feed_providers.dart';
 import 'package:kunime/features/home/application/home_mode_controller.dart';
-import 'package:kunime/features/home/presentation/sections/completed/completed_section.dart';
 import 'package:kunime/features/home/presentation/sections/favorite/favorite_section.dart';
 import 'package:kunime/features/home/presentation/sections/genre/genre_section.dart';
 import 'package:kunime/features/home/presentation/sections/ongoing/ongoing_section.dart';
@@ -21,19 +19,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
-
-  String modeToCategoryId(HomeMode mode) {
-    switch (mode) {
-      case HomeMode.ongoing:
-        return 'ongoing';
-      case HomeMode.completed:
-        return 'completed';
-      case HomeMode.genre:
-        return 'genre';
-      case HomeMode.favorite:
-        return 'favorite';
-    }
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,11 +36,9 @@ class HomeScreen extends ConsumerWidget {
         case HomeMode.ongoing:
           futures.addAll([
             ref.refresh(ongoingAnimeListProvider.future).then((_) {}),
+            ref.refresh(completedAnimeListProvider.future).then((_) {}),
             ref.refresh(homeRecommendationProvider.future).then((_) {}),
           ]);
-          break;
-        case HomeMode.completed:
-          futures.add(ref.read(completedControllerProvider.notifier).refresh());
           break;
         case HomeMode.genre:
           futures.add(ref.refresh(homeGenreProvider.future).then((_) {}));
@@ -118,24 +101,11 @@ class HomeScreen extends ConsumerWidget {
                       // Categories
                       CategorySlider(
                         categories: categories,
-                        selectedId: modeToCategoryId(mode),
+                        selectedId: mode.name,
                         onSelected: (category) {
-                          final notifier = ref.read(homeModeProvider.notifier);
-
-                          switch (category.id) {
-                            case 'ongoing':
-                              notifier.setMode(HomeMode.ongoing);
-                              break;
-                            case 'completed':
-                              notifier.setMode(HomeMode.completed);
-                              break;
-                            case 'genre':
-                              notifier.setMode(HomeMode.genre);
-                              break;
-                            case 'favorite':
-                              notifier.setMode(HomeMode.favorite);
-                              break;
-                          }
+                          ref
+                              .read(homeModeProvider.notifier)
+                              .setMode(HomeMode.values.byName(category.id));
                         },
                       ),
 
@@ -174,8 +144,6 @@ class _HomeSection extends StatelessWidget {
     switch (mode) {
       case HomeMode.ongoing:
         return const OngoingSection();
-      case HomeMode.completed:
-        return const CompletedSection();
       case HomeMode.genre:
         return const GenreSection();
       case HomeMode.favorite:
